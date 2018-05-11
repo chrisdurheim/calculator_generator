@@ -48,6 +48,7 @@ Everyone interacting in the CalculatorGenerator project’s codebases, issue tra
 - [x] Split out input to multiple classes with inheritance
 - [x] Improve templating (make blocks/procs and function calls for inputs, groups, etc)
 - [ ] Configure output file
+- [ ] Add nocss option for sites with pre-existing styling (like KT)
 - [ ] Normalize/clearing rules for OTS calcs
 - [ ] Set display resolution for slider labels (# of decimal points)
 - [ ] Set up to split css for site-wide single styling sheet
