@@ -3,6 +3,7 @@ module CalculatorGenerator
     def initialize(opts = {})
       @title = opts[:title]
       @type = opts[:type]
+      @group = opts[:group]
       @options = opts
     end
 
@@ -114,7 +115,8 @@ module CalculatorGenerator
     end
 
     def jsify
-      string = @title.split.map(&:capitalize).join(' ')
+      string = @group ? (@group + ' ' + @title) : @title
+      string = string.split.map(&:capitalize).join(' ')
       string[0] = string[0].downcase
       string.gsub(' ', '').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '')
     end

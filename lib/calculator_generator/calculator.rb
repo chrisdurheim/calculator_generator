@@ -2,31 +2,27 @@ module CalculatorGenerator
   # A calculator object, containing inputs, outputs, and configurations
   class Calculator
     def initialize(opts  = {}, &block)
-      @title = opts[:title] || 'Calculator'
-      @site = opts[:site] || ''
-      @style = opts[:style] || CalculatorGenerator::Style.new
       @input_groups = []
-
       if block_given?
         instance_eval(&block)
       end
+      @title ||= opts[:title] || 'Calculator'
+      @site ||= opts[:site] || 'Generic'
+      @style ||= opts[:style] || CalculatorGenerator::Style.new
+      @output ||= opts[:output] || (slug(@site) + '-' + slug(@title) + '.html')
       puts render
+    end
+
+    def title(value);  @title = value;  end
+    def site(value);   @site = value;   end
+    def output(value); @output = value; end
+
+    def style(&block)
+      @style = CalculatorGenerator::Style.new site: @site, &block
     end
 
     def input_group(&block)
       @input_groups << CalculatorGenerator::InputGroup.new(&block)
-    end
-
-    def title(string)
-      @title = string
-    end
-
-    def site(string)
-      @site = string
-    end
-
-    def style(&block)
-      @style = CalculatorGenerator::Style.new site: @site, &block
     end
 
     def render(opts = {})
@@ -35,7 +31,7 @@ module CalculatorGenerator
         html += group.to_html
       end
       html += html_close
-      open('test.html', 'w') { |f|
+      open(@output, 'w') { |f|
         f.puts html
       }
       puts html

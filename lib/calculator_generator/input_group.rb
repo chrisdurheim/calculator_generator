@@ -38,7 +38,7 @@ module CalculatorGenerator
         CalculatorGenerator::Input
       end
 
-      @inputs << input.new(args)
+      @inputs << input.new(args.merge(group: @title))
     end
 
     def to_html

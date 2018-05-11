@@ -61,7 +61,7 @@ module CalculatorGenerator
   }
   #{calc_class} h3.calculator-title, #{calc_class} .calculator-result h4 {
     padding: 1rem 0;
-    font-size: 2rem;
+    //font-size: 2rem;
     text-align: center;
     text-transform: uppercase;
   }
@@ -95,7 +95,7 @@ module CalculatorGenerator
     max-width: 50%;
     padding: 0.5rem;
     margin: 0 0.25rem;
-    font-size: 1rem;
+    //font-size: 1rem;
     border: 1px solid #{@border_color};
   }
   #{calc_class} .calculator-input input:focus {
@@ -150,7 +150,7 @@ module CalculatorGenerator
     cursor: pointer;
   }
   #{calc_class} .calculator-result {
-    font-size: 0.9rem;
+    //font-size: 0.9rem;
     margin-top: 2rem;
     overflow-x: auto;
   }
@@ -158,19 +158,19 @@ module CalculatorGenerator
     font-weight: bold;
   }
   #{calc_class} .calculator-result .result-error {
-    font-size: 1.5rem;
+    //font-size: 1.5rem;
     color: #{@error_color};
   }
   #{calc_class} .calculator-result .calculator-highlighted-result {
     text-align: center;
     background-color: #{@error_color};
     color: white;
-    font-size: 1.8rem;
+    //font-size: 1.8rem;
   }
   #{calc_class} .calculator-result-table {
     max-width: 100%;
     overflow-x: scroll;
-    font-size: 0.8rem;
+    //font-size: 0.8rem;
   }
   #{calc_class} .calculator-result-table tr {
     transition: background-color 50ms, color 50ms;
