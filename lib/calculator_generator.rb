@@ -1,6 +1,7 @@
 require "calculator_generator/version"
 require "calculator_generator/calculator"
 require "calculator_generator/style"
+require "calculator_generator/ots_style"
 require "calculator_generator/input_group"
 require "calculator_generator/input"
 require "calculator_generator/currency_input"

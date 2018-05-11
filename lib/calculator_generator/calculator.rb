@@ -8,9 +8,10 @@ module CalculatorGenerator
       end
       @title ||= opts[:title] || 'Calculator'
       @site ||= opts[:site] || 'Generic'
-      @style ||= opts[:style] || CalculatorGenerator::Style.new
+      @style ||= opts[:style] || CalculatorGenerator::OTSStyle.new(site: @site)
       @output ||= opts[:output] || (slug(@site) + '-' + slug(@title) + '.html')
-      puts render
+      render
+      puts "File output to: " + @output
     end
 
     def title(value);  @title = value;  end
@@ -34,12 +35,13 @@ module CalculatorGenerator
       open(@output, 'w') { |f|
         f.puts html
       }
-      puts html
     end
 
     def html_open(opts = {})
       op = '<html>' + "\n" + '<body>' + "\n"
-      op += @style.to_html unless opts[:no_css]
+      if @style
+        op += @style.to_html unless opts[:no_css]
+      end
       op += '<div class="' + slug(@site) + '-calculator" id="' + slug(@title) + '">' + "\n"
       op += '  <h3 class="calculator-title">' + @title + '</h3>' + "\n"
     end
