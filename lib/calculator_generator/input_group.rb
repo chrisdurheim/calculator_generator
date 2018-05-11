@@ -1,9 +1,25 @@
 module CalculatorGenerator
   class InputGroup
     attr_reader :inputs
-    def initialize(opts = {})
+    def initialize(opts = {}, &block)
       @title = opts[:title] || ''
       @inputs = []
+
+      if block_given?
+        instance_eval(&block)
+      end
+    end
+
+    def currency(args)
+      input(:currency, args)
+    end
+
+    def number_slider(args)
+      input(:number_slider, args)
+    end
+
+    def percent_slider(args)
+      input(:percent_slider, args)
     end
 
     def input(type, args)
