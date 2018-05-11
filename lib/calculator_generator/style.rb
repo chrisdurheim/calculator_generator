@@ -26,16 +26,18 @@ module CalculatorGenerator
     def error_color(value);      @error_color = value;      end
     def max_width(value);        @max_width = value;        end
 
-    def site_class
-      @site.gsub(' ', '-').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '-').downcase
-    end
-
     def to_html
       html = ""
       @site_styles.each do |style|
         html += "<link rel='stylesheet' href='#{style}' type='text/css' media='all' />\n"
       end
       html += "<style>\n" + to_css + "\n</style>\n"
+    end
+
+    private
+
+    def site_class
+      @site.gsub(' ', '-').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '-').downcase
     end
 
     def calc_class

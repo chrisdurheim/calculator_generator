@@ -29,10 +29,6 @@ module CalculatorGenerator
       @style = CalculatorGenerator::Style.new site: @site, &block
     end
 
-    def add_input_group(group)
-      @input_groups << group
-    end
-
     def render(opts = {})
       html = html_open(opts)
       @input_groups.each do |group|

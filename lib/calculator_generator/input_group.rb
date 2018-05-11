@@ -41,10 +41,6 @@ module CalculatorGenerator
       @inputs << input.new(args)
     end
 
-    def add_input(input)
-      @inputs << input
-    end
-
     def to_html
       html = html_open
       @inputs.each do |input|
@@ -53,6 +49,8 @@ module CalculatorGenerator
       end
       html += html_close
     end
+
+    private
 
     def html_open
       op = '  <div class="calculator-input-group" id="' + slug + '">' + "\n"

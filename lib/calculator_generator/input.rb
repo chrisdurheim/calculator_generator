@@ -14,6 +14,31 @@ module CalculatorGenerator
       html += html_close
     end
 
+    def jsInput
+      "      const #{jsify}Input = calculator.querySelector('input##{slug}');\n"
+    end
+
+    def jsLabel
+      "      const #{jsify}Label = calculator.querySelector('##{slug}-label');\n"
+    end
+
+    def jsValue
+      "        const #{jsify} = parseFloat(#{jsify}Input.value) || 0;\n"
+    end
+
+    def jsLabelUpdate
+      ''
+    end
+
+    def jsValidations
+      validations = ''
+      validations += jsValidateMin if @options[:min]
+      validations += jsValidateMax if @options[:max]
+      validations
+    end
+
+    private
+
     def html_open
       '    <div class="calculator-input">' + "\n"
     end
@@ -94,28 +119,6 @@ module CalculatorGenerator
       string.gsub(' ', '').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '')
     end
 
-    def jsInput
-      "      const #{jsify}Input = calculator.querySelector('input##{slug}');\n"
-    end
-
-    def jsLabel
-      "      const #{jsify}Label = calculator.querySelector('##{slug}-label');\n"
-    end
-
-    def jsValue
-      "        const #{jsify} = parseFloat(#{jsify}Input.value) || 0;\n"
-    end
-
-    def jsLabelUpdate
-      ''
-    end
-
-    def jsValidations
-      validations = ''
-      validations += jsValidateMin if @options[:min]
-      validations += jsValidateMax if @options[:max]
-      validations
-    end
 
     def jsValidateMin
       val = ''
