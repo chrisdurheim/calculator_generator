@@ -41,3 +41,10 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the CalculatorGenerator project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/calculator_generator/blob/master/CODE_OF_CONDUCT.md).
+
+## To Do
+
+- [ ] Update .gitignore to filter junk-
+- [ ] Improve templating (make blocks/procs and function calls for inputs, groups, etc)
+- [ ] Fix conflicts between KT base style (flexing inputs) and calcgen
+- [ ] Set up to split css for site-wide single styling sheet
