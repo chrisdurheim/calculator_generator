@@ -44,7 +44,7 @@ Everyone interacting in the CalculatorGenerator project’s codebases, issue tra
 
 ## To Do
 
-- [ ] Update .gitignore to filter junk
+- [x] Update .gitignore to filter junk
 - [ ] Improve templating (make blocks/procs and function calls for inputs, groups, etc)
 - [ ] Fix conflicts between KT base style (flexing inputs) and calcgen
 - [ ] Set up to split css for site-wide single styling sheet
