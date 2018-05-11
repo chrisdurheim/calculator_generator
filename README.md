@@ -53,4 +53,5 @@ Everyone interacting in the CalculatorGenerator project’s codebases, issue tra
 - [ ] Add scaffold for tables
 - [ ] Add scaffold for charts
 - [ ] Structure scripts in folder instead of bin
+- [ ] Backport styling differences from projects into generator
 - [ ] Utility function: provide URL, scrape html, css, put calculator embedded in page
