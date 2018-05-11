@@ -1,0 +1,47 @@
+require "bundler/setup"
+require "calculator_generator"
+
+style = CalculatorGenerator::Style.new(site: "CampFIRE Finance",
+                                       brand_color: '#569d3a',
+                                       bg_color: '#fff',
+                                       max_width: '600px',
+                                       border_color: '#d6d6d6',
+                                       focus_color: '#aaaaaa',
+                                       slider_bar_color: '#fff',
+                                       error_color: '#ac0000',
+                                       site_styles: [
+                                          'https://www.campfirefinance.com/wp-content/themes/metro-pro/style.css?ver=2.2.2',
+                                          'https://www.campfirefinance.com/wp-content/plugins/molongui-authorship-premium/premium/public/css/molongui-authorship-premium.5ff8.min.css?ver=2.0.6',
+                                          'https://www.campfirefinance.com/wp-content/plugins/user-submitted-posts/resources/usp.css',
+                                          'https://www.campfirefinance.com/wp-content/plugins/wordpress-popular-posts/public/css/wpp.css?ver=4.0.13',
+                                          'https://www.campfirefinance.com/wp-content/plugins/wp-rss-excerpts-thumbnails/css/styles.css?ver=4.9.5',
+                                          'https://www.campfirefinance.com/wp-includes/css/dashicons.min.css?ver=4.9.5',
+                                          'https://fonts.googleapis.com/css?family=Oswald%3A400&#038;ver=2.2.2',
+                                          'https://www.campfirefinance.com/wp-content/plugins/jetpack/modules/widgets/social-icons/social-icons.css?ver=20170506',
+                                          'https://www.campfirefinance.com/wp-content/plugins/mailchimp-for-wp/assets/css/form-themes.min.css?ver=4.2.1',
+                                          'https://www.campfirefinance.com?display_custom_css=css&#038;ver=4.9.5',
+                                          'https://www.campfirefinance.com/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1',
+                                          'https://www.campfirefinance.com/wp-content/plugins/jetpack/css/jetpack.css?ver=6.1'
+                                         ]
+                                       )
+
+calc = CalculatorGenerator::Calculator.new(title: "True Retirement Cost of Anything Calculator",
+                                           site: "CampFIRE Finance",
+                                           style: style)
+
+
+
+group = CalculatorGenerator::InputGroup.new()
+group.add_input(CalculatorGenerator::Input.new(title: "Amount",
+                                               type: :currency,
+                                               value: 100,
+                                               min: 0))
+group.add_input(CalculatorGenerator::Input.new(title: "Safe Withdrawal Rate",
+                                               type: :percent_slider,
+                                               value: 0.04,
+                                               min: 0.01,
+                                               max: 0.10,
+                                               step: 0.0025))
+calc.add_input_group group
+
+puts calc.render

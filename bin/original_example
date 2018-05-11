@@ -1,0 +1,69 @@
+require "bundler/setup"
+require "calculator_generator"
+
+style = CalculatorGenerator::Style.new(site: "ESIMoney",
+                                       site_styles: [
+                                          'https://fonts.googleapis.com/css?family=Raleway%3A400%2C500%2C700%7CFjalla+One%7CPathway+Gothic+One%7CRoboto%3A400%2C400italic%2C500%2C500italic%2C700%2C700italic%2C300%2C300italic%7CBitter%7CLato%7CLibre+Baskerville%7CMontserrat%7CNeuton%7COpen+Sans%7CPacifico%7CRaleway%7CRoboto%7CSacramento%7CVarela+Round%7COpen Sans%7CLibre Baskerville%7CVarela Round',
+                                          'https://esimoney.com/wp-content/themes/news-pro/style.css',
+                                          'https://esimoney.com/wp-content/plugins/convertplug/modules/assets/css/cp-module-main.css',
+                                          'https://esimoney.com/wp-content/plugins/convertplug/modules/modal/assets/css/modal.min.css',
+                                          'https://esimoney.com/wp-content/plugins/convertplug/modules/modal/assets/demos/every_design/every_design.min.css'
+                                         ])
+
+calc = CalculatorGenerator::Calculator.new(title: "Impact of Career Growth Calculator",
+                                           site: "ESIMoney",
+                                           style: style)
+
+
+
+group = CalculatorGenerator::InputGroup.new(title: "Base Case")
+group.add_input(CalculatorGenerator::Input.new(title: "Starting Salary",
+                                               type: :currency,
+                                               value: 40_000,
+                                               min: 0))
+group.add_input(CalculatorGenerator::Input.new(title: "Annual Raise",
+                                               type: :percent_slider,
+                                               value: 0.03,
+                                               min: 0.01,
+                                               max: 0.20,
+                                               step: 0.01))
+group.add_input(CalculatorGenerator::Input.new(title: "Years of Employment",
+                                               type: :number_slider,
+                                               value: 50,
+                                               min: 1,
+                                               max: 60,
+                                               step: 1))
+calc.add_input_group group
+
+group = CalculatorGenerator::InputGroup.new(title: "Investment Assumptions")
+group.add_input(CalculatorGenerator::Input.new(title: "Annual Return on Investments",
+                                               type: :percent_slider,
+                                               value: 0.08,
+                                               min: 0.01,
+                                               max: 0.20,
+                                               step: 0.01))
+group.add_input(CalculatorGenerator::Input.new(title: "Of Salary Difference Invested",
+                                               type: :percent_slider,
+                                               value: 1.00,
+                                               min: 0.01,
+                                               max: 1.00,
+                                               step: 0.01))
+calc.add_input_group group
+
+group = CalculatorGenerator::InputGroup.new(title: "Negotiated Higher Salary")
+group.add_input(CalculatorGenerator::Input.new(title: "Negotiated Salary",
+                                               type: :currency,
+                                               value: 45_000,
+                                               min: 0))
+calc.add_input_group group
+
+group = CalculatorGenerator::InputGroup.new(title: "Increased Annual Raise")
+group.add_input(CalculatorGenerator::Input.new(title: "Increased Annual Raise",
+                                               type: :percent_slider,
+                                               value: 0.04,
+                                               min: 0.01,
+                                               max: 0.20,
+                                               step: 0.01))
+calc.add_input_group group
+
+puts calc.render
