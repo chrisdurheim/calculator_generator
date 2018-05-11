@@ -1,11 +1,32 @@
 module CalculatorGenerator
   # A calculator object, containing inputs, outputs, and configurations
   class Calculator
-    def initialize(opts  = {})
+    def initialize(opts  = {}, &block)
       @title = opts[:title] || 'Calculator'
       @site = opts[:site] || ''
       @style = opts[:style] || CalculatorGenerator::Style.new
       @input_groups = []
+
+      if block_given?
+        instance_eval(&block)
+      end
+      puts render
+    end
+
+    def input_group(&block)
+      @input_groups << CalculatorGenerator::InputGroup.new(&block)
+    end
+
+    def title(string)
+      @title = string
+    end
+
+    def site(string)
+      @site = string
+    end
+
+    def style(&block)
+      @style = CalculatorGenerator::Style.new site: @site, &block
     end
 
     def add_input_group(group)

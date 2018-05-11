@@ -1,13 +1,17 @@
 module CalculatorGenerator
   class InputGroup
     attr_reader :inputs
-    def initialize(opts = {}, &block)
-      @title = opts[:title] || ''
+    def initialize(&block)
+      @title = ''
       @inputs = []
 
       if block_given?
         instance_eval(&block)
       end
+    end
+
+    def title(string)
+      @title = string
     end
 
     def currency(args)
@@ -50,7 +54,7 @@ module CalculatorGenerator
     end
 
     def html_open
-      op = '  <div class="calculator-input-group" id="' + slug(@title) + '">' + "\n"
+      op = '  <div class="calculator-input-group" id="' + slug + '">' + "\n"
       op += '    <h4 class="calculator-group-title">' + @title + '</h4>' + "\n"
     end
 
@@ -58,7 +62,7 @@ module CalculatorGenerator
       '  </div>' + "\n"
     end
 
-    def slug(title)
+    def slug
 	    @title.gsub(' ', '-').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '-').downcase
     end
   end

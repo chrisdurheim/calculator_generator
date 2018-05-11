@@ -1,25 +1,33 @@
 module CalculatorGenerator
   class Style
-    def initialize(opts = {})
-      @title = opts[:title]
+    def initialize(opts = {}, &block)
       @site = opts[:site]
       @site_styles = opts[:site_styles] || []
       @options = opts
       @brand_color = opts[:brand_color] || '#558B2F'
       @bg_color = opts[:bg_color] || '#F5F5F5'
-      @max_width = opts[:max_width] || '90%'
       @border_color = opts[:border_color] || '#d6d6d6'
       @focus_color = opts[:focus_color] || '#4DBED2'
       @slider_bar_color = opts[:slider_bar_color] || '#9E9E9E'
       @error_color = opts[:error_color] || '#ac0000'
+      @max_width = opts[:max_width] || '90%'
+
+      if block_given?
+        instance_eval(&block)
+      end
     end
+
+    def site_styles(array);      @site_styles = array;      end
+    def brand_color(value);      @brand_color = value;      end
+    def bg_color(value);         @bg_color = value;         end
+    def border_color(value);     @border_color = value;     end
+    def focus_color(value);      @focus_color = value;      end
+    def slider_bar_color(value); @slider_bar_color = value; end
+    def error_color(value);      @error_color = value;      end
+    def max_width(value);        @max_width = value;        end
 
     def site_class
-      slug(@site)
-    end
-
-    def slug(title)
-	    title.gsub(' ', '-').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '-').downcase
+      @site.gsub(' ', '-').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '-').downcase
     end
 
     def to_html
