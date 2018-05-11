@@ -18,7 +18,7 @@ module CalculatorGenerator
     end
 
     def jsValue
-      "                  const #{jsify} = parseCurrencyToFloat(#{jsify}Input.value) || 0;\n"
+      "        const #{jsify} = parseCurrencyToFloat(#{jsify}Input.value) || 0;\n"
     end
   end
 end

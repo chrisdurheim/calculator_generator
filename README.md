@@ -42,10 +42,14 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 Everyone interacting in the CalculatorGenerator project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/calculator_generator/blob/master/CODE_OF_CONDUCT.md).
 
-## To Do
+## Future Feature List (TODO)
 
 - [x] Update .gitignore to filter junk
-- [ ] Split out input to multiple classes with inheritance
-- [ ] Improve templating (make blocks/procs and function calls for inputs, groups, etc)
-- [ ] Fix conflicts between KT base style (flexing inputs) and calcgen
+- [x] Split out input to multiple classes with inheritance
+- [x] Improve templating (make blocks/procs and function calls for inputs, groups, etc)
+- [ ] Set display resolution for slider labels (# of decimal points)
 - [ ] Set up to split css for site-wide single styling sheet
+- [ ] Fix collisions between KT base style (flexing inputs) and calcgen
+- [ ] Add scaffold for tables
+- [ ] Add scaffold for charts
+- [ ] Utility function: provide URL, scrape html, css, put calculator embedded in page

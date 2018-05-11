@@ -24,7 +24,7 @@ module CalculatorGenerator
     end
 
     def jsLabelUpdate
-      "                  #{jsify}Label.innerHTML = #{jsify} + ' #{@title.downcase}' ;\n"
+      "        #{jsify}Label.innerHTML = #{jsify} + ' #{@title.downcase}' ;\n"
     end
   end
 end

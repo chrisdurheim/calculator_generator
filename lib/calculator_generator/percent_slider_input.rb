@@ -24,26 +24,25 @@ module CalculatorGenerator
     end
 
     def jsLabelUpdate
-      "                  #{jsify}Label.innerHTML = (#{jsify} * 100).toFixed(0) + '% #{@title.downcase}' ;\n"
+      "        #{jsify}Label.innerHTML = (#{jsify} * 100).toFixed(0) + '% #{@title.downcase}' ;\n"
     end
 
     def jsValidateMin
       val = ''
-      val += "if (#{jsify} < #{@options[:min]}) {\n"
-      val += "console.log(#{jsify});\n"
-      val += "outputDiv.innerHTML = '';\n"
-      val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} greater than #{@options[:min] * 100}%', 'result-error'));\n"
-      val += "return;\n"
-      val += "}\n"
+      val += "          if (#{jsify} < #{@options[:min]}) {\n"
+      val += "            outputDiv.innerHTML = '';\n"
+      val += "            outputDiv.appendChild(tag('span', 'Set #{@title.downcase} greater than #{@options[:min] * 100}%', 'result-error'));\n"
+      val += "            return;\n"
+      val += "          }\n"
     end
 
     def jsValidateMax
       val = ''
-      val += "if (#{jsify} > #{@options[:max]}) {\n"
-      val += "outputDiv.innerHTML = '';\n"
-      val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} less than #{@options[:max] * 100}%', 'result-error'));\n"
-      val += "return;\n"
-      val += "}\n"
+      val += "          if (#{jsify} > #{@options[:max]}) {\n"
+      val += "            outputDiv.innerHTML = '';\n"
+      val += "            outputDiv.appendChild(tag('span', 'Set #{@title.downcase} less than #{@options[:max] * 100}%', 'result-error'));\n"
+      val += "            return;\n"
+      val += "          }\n"
     end
   end
 end

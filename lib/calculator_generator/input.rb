@@ -89,19 +89,21 @@ module CalculatorGenerator
     end
 
     def jsify
-      @title.split.map(&:capitalize).join(' ').gsub(' ', '').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '')
+      string = @title.split.map(&:capitalize).join(' ')
+      string[0] = string[0].downcase
+      string.gsub(' ', '').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '')
     end
 
     def jsInput
-      "                const #{jsify}Input = calculator.querySelector('input##{slug}');\n"
+      "      const #{jsify}Input = calculator.querySelector('input##{slug}');\n"
     end
 
     def jsLabel
-      "                const #{jsify}Label = calculator.querySelector('##{slug}-label');\n"
+      "      const #{jsify}Label = calculator.querySelector('##{slug}-label');\n"
     end
 
     def jsValue
-      "                  const #{jsify} = parseFloat(#{jsify}Input.value) || 0;\n"
+      "        const #{jsify} = parseFloat(#{jsify}Input.value) || 0;\n"
     end
 
     def jsLabelUpdate
@@ -117,21 +119,20 @@ module CalculatorGenerator
 
     def jsValidateMin
       val = ''
-      val += "if (#{jsify} < #{@options[:min]}) {\n"
-      val += "console.log(#{jsify});\n"
-      val += "outputDiv.innerHTML = '';\n"
-      val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} greater than #{@options[:min]}', 'result-error'));\n"
-      val += "return;\n"
-      val += "}\n"
+      val += "          if (#{jsify} < #{@options[:min]}) {\n"
+      val += "            outputDiv.innerHTML = '';\n"
+      val += "            outputDiv.appendChild(tag('span', 'Set #{@title.downcase} greater than #{@options[:min]}', 'result-error'));\n"
+      val += "            return;\n"
+      val += "          }\n"
     end
 
     def jsValidateMax
       val = ''
-      val += "if (#{jsify} > #{@options[:max]}) {\n"
-      val += "outputDiv.innerHTML = '';\n"
-      val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} less than #{@options[:max]}', 'result-error'));\n"
-      val += "return;\n"
-      val += "}\n"
+      val += "          if (#{jsify} > #{@options[:max]}) {\n"
+      val += "            outputDiv.innerHTML = '';\n"
+      val += "            outputDiv.appendChild(tag('span', 'Set #{@title.downcase} less than #{@options[:max]}', 'result-error'));\n"
+      val += "            return;\n"
+      val += "          }\n"
     end
   end
 end
