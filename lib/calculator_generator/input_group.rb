@@ -2,7 +2,7 @@ module CalculatorGenerator
   class InputGroup
     attr_reader :inputs
     def initialize(&block)
-      @title = ''
+
       @inputs = []
 
       if block_given?
@@ -48,6 +48,7 @@ module CalculatorGenerator
     def to_html
       html = html_open
       @inputs.each do |input|
+        puts "Uh oh" if html.nil?
         html += input.to_html
       end
       html += html_close
@@ -55,7 +56,8 @@ module CalculatorGenerator
 
     def html_open
       op = '  <div class="calculator-input-group" id="' + slug + '">' + "\n"
-      op += '    <h4 class="calculator-group-title">' + @title + '</h4>' + "\n"
+      (op += '    <h4 class="calculator-group-title">' + @title + '</h4>' + "\n") if @title
+      op
     end
 
     def html_close
@@ -63,6 +65,7 @@ module CalculatorGenerator
     end
 
     def slug
+      return '' unless @title
 	    @title.gsub(' ', '-').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '-').downcase
     end
   end

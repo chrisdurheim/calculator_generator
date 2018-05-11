@@ -1,0 +1,33 @@
+require "bundler/setup"
+require "calculator_generator"
+
+CalculatorGenerator::Calculator.new do
+  site "CampFIRE Finance"
+  title "True Retirement Cost of Anything Calculator"
+
+  style do
+    brand_color      '#569D3A' # Border, background of sections
+    bg_color         '#FFFFFF' # Background of calculator
+    border_color     '#d6d6d6' # Border of inputs
+    focus_color      '#aaaaaa' # Focus of inputs
+    slider_bar_color '#ffffff'
+    error_color      '#ac0000'
+    max_width        '600px'
+    site_styles      ['https://www.campfirefinance.com/wp-content/themes/metro-pro/style.css?ver=2.2.2',
+                      'https://www.campfirefinance.com/wp-content/plugins/molongui-authorship-premium/premium/public/css/molongui-authorship-premium.5ff8.min.css?ver=2.0.6',
+                      'https://www.campfirefinance.com/wp-content/plugins/user-submitted-posts/resources/usp.css',
+                      'https://www.campfirefinance.com/wp-content/plugins/wordpress-popular-posts/public/css/wpp.css?ver=4.0.13',
+                      'https://www.campfirefinance.com/wp-content/plugins/wp-rss-excerpts-thumbnails/css/styles.css?ver=4.9.5',
+                      'https://www.campfirefinance.com/wp-includes/css/dashicons.min.css?ver=4.9.5',
+                      'https://fonts.googleapis.com/css?family=Oswald%3A400&#038;ver=2.2.2',
+                      'https://www.campfirefinance.com/wp-content/plugins/jetpack/modules/widgets/social-icons/social-icons.css?ver=20170506',
+                      'https://www.campfirefinance.com/wp-content/plugins/mailchimp-for-wp/assets/css/form-themes.min.css?ver=4.2.1',
+                      'https://www.campfirefinance.com?display_custom_css=css&#038;ver=4.9.5',
+                      'https://www.campfirefinance.com/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1',
+                      'https://www.campfirefinance.com/wp-content/plugins/jetpack/css/jetpack.css?ver=6.1']
+  end
+  input_group do
+    currency       title: "Amount", value: "100", min: 0
+    percent_slider title: "Safe Withdrawal Rate", value: 0.04, min: 0.01, max: 0.10, step: 0.0025
+  end
+end

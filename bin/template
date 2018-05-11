@@ -2,14 +2,14 @@ require "bundler/setup"
 require "calculator_generator"
 
 CalculatorGenerator::Calculator.new do
-  title "Generic Calculator"
   site "Keep Thrifty"
+  title "Generic Calculator"
   style do
-    brand_color      '#558B2F'
-    bg_color         '#F5F5F5'
-    border_color     '#d6d6d6'
-    focus_color      '#4DBED2'
-    slider_bar_color '#fff'
+    brand_color      '#558B2F' # Border, background of sections
+    bg_color         '#F5F5F5' # Background of calculator
+    border_color     '#d6d6d6' # Border of inputs
+    focus_color      '#4DBED2' # Focus of inputs
+    slider_bar_color '#ffffff'
     error_color      '#ac0000'
     max_width        '600px'
     site_styles      []

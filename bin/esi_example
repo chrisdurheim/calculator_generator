@@ -1,0 +1,44 @@
+require "bundler/setup"
+require "calculator_generator"
+
+CalculatorGenerator::Calculator.new do
+  site "ESIMoney"
+  title "Impact of Career Growth Calculator"
+  style do
+    brand_color      '#0000B3' # Border, background of sections
+    bg_color         '#F3F3F3' # Background of calculator
+    border_color     '#d6d6d6' # Border of inputs
+    focus_color      '#aaaaaa' # Focus of inputs
+    slider_bar_color '#dddddd'
+    error_color      '#ac0000'
+    max_width        '600px'
+    site_styles      ['https://fonts.googleapis.com/css?family=Raleway%3A400%2C500%2C700%7CFjalla+One%7CPathway+Gothic+One%7CRoboto%3A400%2C400italic%2C500%2C500italic%2C700%2C700italic%2C300%2C300italic%7CBitter%7CLato%7CLibre+Baskerville%7CMontserrat%7CNeuton%7COpen+Sans%7CPacifico%7CRaleway%7CRoboto%7CSacramento%7CVarela+Round%7COpen Sans%7CLibre Baskerville%7CVarela Round',
+                      'https://esimoney.com/wp-content/themes/news-pro/style.css',
+                      'https://esimoney.com/wp-content/plugins/convertplug/modules/assets/css/cp-module-main.css',
+                      'https://esimoney.com/wp-content/plugins/convertplug/modules/modal/assets/css/modal.min.css',
+                      'https://esimoney.com/wp-content/plugins/convertplug/modules/modal/assets/demos/every_design/every_design.min.css']
+  end
+
+  input_group do
+    title          "Base Case"
+    currency       title: "Starting Salary", value: "40,000", min: 0
+    percent_slider title: "Annual Raise", value: 0.03, min: 0.01, max: 0.20, step: 0.01
+    number_slider  title: "Years of Employment", value: 50, min: 1, max: 60, step: 1
+  end
+
+  input_group do
+    title          "Investment Assumptions"
+    percent_slider title: "Annual Return on Investments", value: 0.08, min: 0.01, max: 0.20, step: 0.01
+    percent_slider title: "Of Salary Difference Invested", value: 1.00, min: 0.01, max: 1.00, step: 0.01
+  end
+
+  input_group do
+    title          "Negotiated Higher Salary"
+    currency       title: "Negotiated Salary", value: "45,000", min: 0
+  end
+
+  input_group do
+    title          "Increased Annual Raise"
+    percent_slider       title: "Increased Annual Raise", value: 0.04, min: 0.01, max: 0.20, step: 0.01
+  end
+end
