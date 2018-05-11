@@ -6,6 +6,21 @@ module CalculatorGenerator
       @inputs = []
     end
 
+    def input(type, args)
+      input = case type
+      when :currency
+        CalculatorGenerator::CurrencyInput
+      when :number_slider
+        CalculatorGenerator::NumberSliderInput
+      when :percent_slider
+        CalculatorGenerator::PercentSliderInput
+      else
+        CalculatorGenerator::Input
+      end
+
+      @inputs << input.new(args)
+    end
+
     def add_input(input)
       @inputs << input
     end

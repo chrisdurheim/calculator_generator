@@ -18,21 +18,25 @@ calc = CalculatorGenerator::Calculator.new title: "Generic Calculator",
 
 group = CalculatorGenerator::InputGroup.new title: "A group"
 
-group.add_input(CalculatorGenerator::CurrencyInput.new title: "A Currency Input",
-                                                       value: 40_000,
-                                                       min: 0)
+group.input :currency,
+            title: "A Currency Input",
+            value: "40,000",
+            min: 0
 
-group.add_input(CalculatorGenerator::PercentSliderInput.new title: "A Percent Slider",
-                                                            value: 0.03,
-                                                            min: 0.01,
-                                                            max: 0.20,
-                                                            step: 0.01)
+group.input :percent_slider,
+            title: "A Percent Slider",
+            value: 0.03,
+            min: 0.01,
+            max: 0.20,
+            step: 0.01
 
-group.add_input(CalculatorGenerator::NumberSliderInput.new title: "A Number Slider",
-                                                           value: 50,
-                                                           min: 1,
-                                                           max: 60,
-                                                           step: 1)
+group.input :number_slider,
+            title: "A Number Slider",
+            value: 50,
+            min: 1,
+            max: 60,
+            step: 1
+
 calc.add_input_group group
 
 puts calc.render
