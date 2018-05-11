@@ -17,14 +17,15 @@ module CalculatorGenerator
       end
     end
 
-    def site_styles(array);      @site_styles = array;      end
-    def brand_color(value);      @brand_color = value;      end
-    def bg_color(value);         @bg_color = value;         end
-    def border_color(value);     @border_color = value;     end
-    def focus_color(value);      @focus_color = value;      end
-    def slider_bar_color(value); @slider_bar_color = value; end
-    def error_color(value);      @error_color = value;      end
-    def max_width(value);        @max_width = value;        end
+    def site_styles(array);           @site_styles = array;           end
+    def brand_color(value);           @brand_color = value;           end
+    def bg_color(value);              @bg_color = value;              end
+    def border_color(value);          @border_color = value;          end
+    def focus_color(value);           @focus_color = value;           end
+    def slider_bar_color(value);      @slider_bar_color = value;      end
+    def slider_hover_bg_color(value); @slider_hover_bg_color = value; end
+    def error_color(value);           @error_color = value;           end
+    def max_width(value);             @max_width = value;             end
 
     def to_html
       html = ""
@@ -130,7 +131,7 @@ module CalculatorGenerator
     padding: 0 !important;
   }
   #{calc_class} .slider:hover {
-    background: #{@bg_color};
+    background: #{@slider_hover_bg_color || @bg_color};
   }
   #{calc_class} .slider::-webkit-slider-thumb {
     -webkit-appearance: none;

@@ -10,10 +10,4 @@ CalculatorGenerator::Calculator.new do
     percent_slider title: "A Percent Slider", value: 0.03, min: 0.01, max: 0.20, step: 0.01
     number_slider  title: "A Number Slider", value: 50, min: 1, max: 60, step: 1
   end
-  input_group do
-    title         "Another group"
-    percent_slider title: "one", value: 0.01, min: 0.01, max: 0.03, step: 0.01
-    percent_slider title: "two", value: 0.02, min: 0.01, max: 0.03, step: 0.01
-    percent_slider title: "three", value: 0.03, min: 0.01, max: 0.03, step: 0.01
-  end
 end
