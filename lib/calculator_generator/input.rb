@@ -111,7 +111,8 @@ module CalculatorGenerator
     end
 
     def slug
-	    @title.gsub(' ', '-').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '-').downcase
+      string = @group ? (@group + ' ' + @title) : @title
+	    string.gsub(' ', '-').gsub(/[^\w-]/, '').gsub(/(-){2,}/, '-').downcase
     end
 
     def jsify
