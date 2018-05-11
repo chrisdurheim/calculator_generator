@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "calculator_generator"
 
-style = CalculatorGenerator::Style.new(site: "Keep Thrifty",
+style = CalculatorGenerator::Style.new site: "Keep Thrifty",
                                        brand_color: '#558B2F',
                                        bg_color: '#F5F5F5',
                                        max_width: '600px',
@@ -9,33 +9,30 @@ style = CalculatorGenerator::Style.new(site: "Keep Thrifty",
                                        focus_color: '#4DBED2',
                                        slider_bar_color: '#fff',
                                        error_color: '#ac0000',
-                                       site_styles: [
-                                          
-                                         ])
+                                       site_styles: []
 
-calc = CalculatorGenerator::Calculator.new(title: "Generic Calculator",
+calc = CalculatorGenerator::Calculator.new title: "Generic Calculator",
                                            site: "Keep Thrifty",
-                                           style: style)
+                                           style: style
 
 
+group = CalculatorGenerator::InputGroup.new title: "A group"
 
-group = CalculatorGenerator::InputGroup.new(title: "A group")
-group.add_input(CalculatorGenerator::Input.new(title: "A Currency Input",
-                                               type: :currency,
-                                               value: 40_000,
-                                               min: 0))
-group.add_input(CalculatorGenerator::Input.new(title: "A Percent Slider",
-                                               type: :percent_slider,
-                                               value: 0.03,
-                                               min: 0.01,
-                                               max: 0.20,
-                                               step: 0.01))
-group.add_input(CalculatorGenerator::Input.new(title: "A Number Slider",
-                                               type: :number_slider,
-                                               value: 50,
-                                               min: 1,
-                                               max: 60,
-                                               step: 1))
+group.add_input(CalculatorGenerator::CurrencyInput.new title: "A Currency Input",
+                                                       value: 40_000,
+                                                       min: 0)
+
+group.add_input(CalculatorGenerator::PercentSliderInput.new title: "A Percent Slider",
+                                                            value: 0.03,
+                                                            min: 0.01,
+                                                            max: 0.20,
+                                                            step: 0.01)
+
+group.add_input(CalculatorGenerator::NumberSliderInput.new title: "A Number Slider",
+                                                           value: 50,
+                                                           min: 1,
+                                                           max: 60,
+                                                           step: 1)
 calc.add_input_group group
 
 puts calc.render

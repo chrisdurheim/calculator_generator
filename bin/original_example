@@ -17,18 +17,15 @@ calc = CalculatorGenerator::Calculator.new(title: "Impact of Career Growth Calcu
 
 
 group = CalculatorGenerator::InputGroup.new(title: "Base Case")
-group.add_input(CalculatorGenerator::Input.new(title: "Starting Salary",
-                                               type: :currency,
-                                               value: 40_000,
+group.add_input(CalculatorGenerator::CurrencyInput.new(title: "Starting Salary",
+                                               value: "40,000",
                                                min: 0))
-group.add_input(CalculatorGenerator::Input.new(title: "Annual Raise",
-                                               type: :percent_slider,
+group.add_input(CalculatorGenerator::PercentSliderInput.new(title: "Annual Raise",
                                                value: 0.03,
                                                min: 0.01,
                                                max: 0.20,
                                                step: 0.01))
-group.add_input(CalculatorGenerator::Input.new(title: "Years of Employment",
-                                               type: :number_slider,
+group.add_input(CalculatorGenerator::NumberSliderInput.new(title: "Years of Employment",
                                                value: 50,
                                                min: 1,
                                                max: 60,
@@ -36,14 +33,12 @@ group.add_input(CalculatorGenerator::Input.new(title: "Years of Employment",
 calc.add_input_group group
 
 group = CalculatorGenerator::InputGroup.new(title: "Investment Assumptions")
-group.add_input(CalculatorGenerator::Input.new(title: "Annual Return on Investments",
-                                               type: :percent_slider,
+group.add_input(CalculatorGenerator::PercentSliderInput.new(title: "Annual Return on Investments",
                                                value: 0.08,
                                                min: 0.01,
                                                max: 0.20,
                                                step: 0.01))
-group.add_input(CalculatorGenerator::Input.new(title: "Of Salary Difference Invested",
-                                               type: :percent_slider,
+group.add_input(CalculatorGenerator::PercentSliderInput.new(title: "Of Salary Difference Invested",
                                                value: 1.00,
                                                min: 0.01,
                                                max: 1.00,
@@ -51,15 +46,13 @@ group.add_input(CalculatorGenerator::Input.new(title: "Of Salary Difference Inve
 calc.add_input_group group
 
 group = CalculatorGenerator::InputGroup.new(title: "Negotiated Higher Salary")
-group.add_input(CalculatorGenerator::Input.new(title: "Negotiated Salary",
-                                               type: :currency,
-                                               value: 45_000,
+group.add_input(CalculatorGenerator::CurrencyInput.new(title: "Negotiated Salary",
+                                               value: "45,000",
                                                min: 0))
 calc.add_input_group group
 
 group = CalculatorGenerator::InputGroup.new(title: "Increased Annual Raise")
-group.add_input(CalculatorGenerator::Input.new(title: "Increased Annual Raise",
-                                               type: :percent_slider,
+group.add_input(CalculatorGenerator::PercentSliderInput.new(title: "Increased Annual Raise",
                                                value: 0.04,
                                                min: 0.01,
                                                max: 0.20,

@@ -24,26 +24,12 @@ module CalculatorGenerator
 
     def label
       lbl = '      <label for="' + slug + '" id="' + slug + '-label">'
-      case @type
-      when :currency
-        lbl += @title
-      when :number_slider
-        lbl += @options[:value].to_s + " " + @title.downcase
-      when :percent_slider
-        lbl += (@options[:value] * 100).to_s + "% " + @title.downcase
-      else
-        lbl += @title
-      end
+      lbl += @title
       lbl += '</label><br />' + "\n"
     end
 
     def input_prefix
-      case @type
-      when :currency
-        '      <span class="input-prefix">$</span>' + "\n"
-      else
-        ''
-      end
+      ''
     end
 
     def input
@@ -63,25 +49,11 @@ module CalculatorGenerator
     end
 
     def input_type
-      case @type
-      when :currency
-        'text'
-      when :number_slider
-        'range'
-      when :percent_slider
-        'range'
-      end
+      'number'
     end
 
     def input_class
-      case @type
-      when :currency
-        'currency'
-      when :number_slider
-        'slider'
-      when :percent_slider
-        'slider slider--percent'
-      end
+      ''
     end
 
     def klass
@@ -129,30 +101,15 @@ module CalculatorGenerator
     end
 
     def jsValue
-      method = case @type
-      when :currency
-        "parseCurrencyToFloat(#{jsify}Input.value) || 0"
-      when :number_slider
-        "parseFloat(#{jsify}Input.value) || 0"
-      when :percent_slider
-        "parseFloat(#{jsify}Input.value) || 0"
-      end
-      "                  const #{jsify} = #{method};\n"
+      "                  const #{jsify} = parseFloat(#{jsify}Input.value) || 0;\n"
     end
 
     def jsLabelUpdate
-      if @type == :number_slider
-        "                  #{jsify}Label.innerHTML = #{jsify} + ' #{@title.downcase}' ;\n"
-      elsif @type == :percent_slider
-        "                  #{jsify}Label.innerHTML = (#{jsify} * 100).toFixed(0) + '% #{@title.downcase}' ;\n"
-      else
-        ""
-      end
+      ''
     end
 
     def jsValidations
       validations = ''
-
       validations += jsValidateMin if @options[:min]
       validations += jsValidateMax if @options[:max]
       validations
@@ -163,11 +120,7 @@ module CalculatorGenerator
       val += "if (#{jsify} < #{@options[:min]}) {\n"
       val += "console.log(#{jsify});\n"
       val += "outputDiv.innerHTML = '';\n"
-      if @type == :percent_slider
-        val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} greater than #{@options[:min] * 100}%', 'result-error'));\n"
-      else
-        val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} greater than #{@options[:min]}', 'result-error'));\n"
-      end
+      val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} greater than #{@options[:min]}', 'result-error'));\n"
       val += "return;\n"
       val += "}\n"
     end
@@ -176,11 +129,7 @@ module CalculatorGenerator
       val = ''
       val += "if (#{jsify} > #{@options[:max]}) {\n"
       val += "outputDiv.innerHTML = '';\n"
-      if @type == :percent_slider
-        val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} less than #{@options[:max] * 100}%', 'result-error'));\n"
-      else
-        val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} less than #{@options[:max]}', 'result-error'));\n"
-      end
+      val += "outputDiv.appendChild(tag('span', 'Set #{@title.downcase} less than #{@options[:max]}', 'result-error'));\n"
       val += "return;\n"
       val += "}\n"
     end

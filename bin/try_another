@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "calculator_generator"
 
-style = CalculatorGenerator::Style.new(site: "CampFIRE Finance",
+style = CalculatorGenerator::Style.new site: "CampFIRE Finance",
                                        brand_color: '#569d3a',
                                        bg_color: '#fff',
                                        max_width: '600px',
@@ -23,25 +23,22 @@ style = CalculatorGenerator::Style.new(site: "CampFIRE Finance",
                                           'https://www.campfirefinance.com/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1',
                                           'https://www.campfirefinance.com/wp-content/plugins/jetpack/css/jetpack.css?ver=6.1'
                                          ]
-                                       )
 
-calc = CalculatorGenerator::Calculator.new(title: "True Retirement Cost of Anything Calculator",
+calc = CalculatorGenerator::Calculator.new title: "True Retirement Cost of Anything Calculator",
                                            site: "CampFIRE Finance",
-                                           style: style)
+                                           style: style
 
+group = CalculatorGenerator::InputGroup.new
 
+group.add_input(CalculatorGenerator::CurrencyInput.new title: "Amount",
+                                                       value: 100,
+                                                       min: 0)
 
-group = CalculatorGenerator::InputGroup.new()
-group.add_input(CalculatorGenerator::Input.new(title: "Amount",
-                                               type: :currency,
-                                               value: 100,
-                                               min: 0))
-group.add_input(CalculatorGenerator::Input.new(title: "Safe Withdrawal Rate",
-                                               type: :percent_slider,
-                                               value: 0.04,
-                                               min: 0.01,
-                                               max: 0.10,
-                                               step: 0.0025))
+group.add_input(CalculatorGenerator::PercentSliderInput.new title: "Safe Withdrawal Rate",
+                                                            value: 0.04,
+                                                            min: 0.01,
+                                                            max: 0.10,
+                                                            step: 0.0025)
 calc.add_input_group group
 
 puts calc.render
