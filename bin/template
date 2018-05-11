@@ -2,8 +2,8 @@ require "bundler/setup"
 require "calculator_generator"
 
 CalculatorGenerator::Calculator.new do
-  site "Keep Thrifty"
-  title "Generic Calculator"
+  site "Generic"
+  title "Calculator"
   style do
     brand_color      '#558B2F' # Border, background of sections
     bg_color         '#F5F5F5' # Background of calculator
