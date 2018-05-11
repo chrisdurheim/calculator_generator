@@ -14,9 +14,10 @@ module CalculatorGenerator
       puts "File output to: " + @output
     end
 
-    def title(value);  @title = value;  end
-    def site(value);   @site = value;   end
-    def output(value); @output = value; end
+    def title(value);  @title = value;      end
+    def site(value);   @site = value;       end
+    def output(value); @output = value;     end
+    def attribution;   @attribution = true; end
 
     def style(&block)
       @style = CalculatorGenerator::Style.new site: @site, &block
@@ -48,9 +49,14 @@ module CalculatorGenerator
 
     def html_close
       cl = '  <div class="calculator-result"></div>' + "\n"
+      cl += html_attribution if @attribution
       cl += '</div>' + "\n"
       cl += js_open + js_shared + js_core + js_close
       cl += '</body>' + "\n" + '</html>' + "\n"
+    end
+
+    def html_attribution
+      '<div class="calculator-attribution"><a href="https://www.keepthrifty.com/work-with-us/#calculators-for-your-website">Calculator created by Chris Durheim</a></div>'
     end
 
     def js_open

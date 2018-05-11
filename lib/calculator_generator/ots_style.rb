@@ -44,6 +44,9 @@ module CalculatorGenerator
   }
   #{calc_class} .calculator-input label {
     color: #555555;
+  }
+  #{calc_class} .calculator-result h4 {
+    text-decoration: underline;
   })
     end
   end

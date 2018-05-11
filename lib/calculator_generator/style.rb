@@ -195,6 +195,23 @@ module CalculatorGenerator
     margin: 0 auto;
     cursor: pointer;
     text-align: center;
+  }
+  #{calc_class} .calculator-attribution {
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-top: 2rem;
+    padding: 1rem 0.5rem;
+    border-top: 1px solid #{@border_color};
+  }
+  #{calc_class} .calculator-attribution a {
+    font-size: 0.8rem;
+    color: #{@brand_color};
+    text-decoration: none;
+  }
+  #{calc_class} .calculator-attribution a:hover {
+    color: #{@focus_color};
+    text-decoration: underline;
   })
     end
   end

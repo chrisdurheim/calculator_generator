@@ -3,11 +3,12 @@ require "calculator_generator"
 
 CalculatorGenerator::Calculator.new do
   site "OTS"
-  title "Calculator"
+  title "Generic Off-the-shelf Calculator"
+  attribution
   input_group do
-    title         "A group"
-    currency       title: "A Currency Input", value: "40,000", min: 0
-    percent_slider title: "A Percent Slider", value: 0.03, min: 0.01, max: 0.20, step: 0.01
-    number_slider  title: "A Number Slider", value: 50, min: 1, max: 60, step: 1
+    title         "Numeric input group"
+    currency       title: "Currency", value: "40,000", min: 0
+    percent_slider title: "Slider", value: 0.03, min: 0.01, max: 0.20, step: 0.01
+    number_slider  title: "Value", value: 50, min: 1, max: 60, step: 1
   end
 end
