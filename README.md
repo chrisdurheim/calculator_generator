@@ -52,4 +52,5 @@ Everyone interacting in the CalculatorGenerator project’s codebases, issue tra
 - [ ] Fix collisions between KT base style (flexing inputs) and calcgen
 - [ ] Add scaffold for tables
 - [ ] Add scaffold for charts
+- [ ] Structure scripts in folder instead of bin
 - [ ] Utility function: provide URL, scrape html, css, put calculator embedded in page
