@@ -3,7 +3,7 @@ require "calculator_generator"
 
 CalculatorGenerator::Calculator.new do
   site "CampFIRE Finance"
-  title "True Retirement Cost of Anything Calculator"
+  title "FIRE Calculator"
 
   style do
     brand_color      '#569D3A' # Border, background of sections
@@ -27,7 +27,15 @@ CalculatorGenerator::Calculator.new do
                       'https://www.campfirefinance.com/wp-content/plugins/jetpack/css/jetpack.css?ver=6.1']
   end
   input_group do
-    currency       title: "Amount", value: "100", min: 0
+    title          "Current Status Numbers"
+    currency       title: "Portfolio Balance", value: "50000", min: 0
+    currency       title: "Monthly Investment", value: "500", min: 0
+  end
+  input_group do
+    title "Assumptions"
+    currency       title: "Monthly Expenses", value: "100", min: 0
+    percent_slider title: "Portfolio Growth Rate", value: 0.07, min: 0.01, max: 0.10, step: 0.0025
+    percent_slider title: "Inflation Rate", value: 0.025, min: 0.01, max: 0.10, step: 0.0025
     percent_slider title: "Safe Withdrawal Rate", value: 0.04, min: 0.01, max: 0.10, step: 0.0025
   end
 end
